@@ -1,8 +1,8 @@
+run:
+	go run .
+
 build:
 	go build -o server .
-
-run:
-	go run ./server
 
 docker-build:
 	docker build -t ielab-searchrefiner .
