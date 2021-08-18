@@ -22,7 +22,7 @@ searchrefiner can also be run from a preprepared [Dockerfile](./Dockerfile):
 1. Create a `config.json` file (see above)
 2. Setup the docker image with `make docker-build` or `make docker-build-force` to force a rebuild
 3. Run the server with `make docker-run`
-4. To deploy on SRA in the `/sites/ecosystem` folder run `pm2 restart ecosystem.json`
+4. Or, to deploy on SRA in the `/sites/ecosystem` folder run `pm2 restart ecosystem.config.js`
 5. Query site at [http://localhost:4853](http://localhost:4853)
 
 
