@@ -9,10 +9,14 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/hscells/groove/stats"
 	log "github.com/sirupsen/logrus"
 )
 
+var entrez stats.EntrezStatisticsSource
+
 func main() {
+	// Load
 	f, err := os.Open("config.json")
 	if err != nil {
 		log.Fatalln(err)
@@ -24,6 +28,17 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	// Setup entrez
+	entrez, err = stats.NewEntrezStatisticsSource(
+		stats.EntrezOptions(stats.SearchOptions{Size: 100000, RunName: "searchrefiner"}),
+		stats.EntrezTool("searchrefiner"),
+		stats.EntrezEmail(c.Entrez.Email),
+		stats.EntrezAPIKey(c.Entrez.APIKey))
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// Setup gin
 	g := gin.Default()
 
 	// Writer / Logger
