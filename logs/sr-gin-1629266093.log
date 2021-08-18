@@ -1,2 +1,0 @@
-[GIN-debug] POST   /api/queryvis             --> main.handleTree (5 handlers)
-[GIN-debug] Listening and serving HTTP on :4853

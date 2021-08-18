@@ -1,3 +1,0 @@
-[GIN-debug] POST   /api/queryvis             --> main.handleTree (5 handlers)
-[GIN-debug] Listening and serving HTTP on :4853
-::1 - [2021-08-18T15:49:35+10:00] "POST /api/queryvis HTTP/1.1 200 41.158µs "PostmanRuntime/7.28.2" "
