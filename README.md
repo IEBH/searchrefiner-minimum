@@ -21,8 +21,8 @@ At the moment, you still need to make an account to use searchrefiner, even loca
 searchrefiner can also be run from a preprepared [Dockerfile](./Dockerfile):
 1. Create a `config.json` file (see above)
 2. Setup the docker image with `make docker-build` or `make docker-build-force` to force a rebuild
-3. Run the server with `docker-run`
-4. To deploy on SRA run `make docker-run` and then in the `/sites/ecosystem` folder run `pm2 restart ecosystem.json`
+3. Run the server with `make docker-run`
+4. To deploy on SRA in the `/sites/ecosystem` folder run `pm2 restart ecosystem.json`
 5. Query site at [http://localhost:4853](http://localhost:4853)
 
 
