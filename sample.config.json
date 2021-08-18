@@ -1,0 +1,36 @@
+{
+  "Host": ":4853",
+  "AdminEmail": "",
+  "Admins": [
+    "admin"
+  ],
+  "RequireAuth": false,
+  "Entrez": {
+    "Email": "",
+    "APIKey": ""
+  },
+  "EnableAll": true,
+  "Mode": "",
+  "Resources": {
+    "Cui2VecEmbeddings": "resources/cui2vec_precomputed.bin",
+    "Cui2VecMappings": "resources/cuis.csv",
+    "Quiche": "resources/quiche.cache",
+    "QuickRank": "resources/quickrank/bin/quicklearn"
+  },
+  "Services": {
+    "MetaMapURL": "ielab-metamap",
+    "ElasticsearchPubMedURL": "ielab-pubmed-index",
+    "ElasticsearchPubMedUsername": "username-for-elastic-search-index-of-pubmed",
+    "ElasticsearchPubMedPassword": "pass-for-elastic-search-index-of-pubmed",
+    "ElasticsearchPubMedUMLSURL": "ielab-pubmed-index",
+    "ElasticsearchPubMedUMLSUsername": "username-for-elastic-search-index-of-pubmed",
+    "ElasticsearchPubMedUMLSPassword": "pass-for-elastic-search-index-of-pubmed",
+    "IndexName": "index-name",
+    "DefaultPool": 5,
+    "DefaultRetSize": 5,
+    "MaxRetSize": 10,
+    "MaxPool": 10,
+    "Merged": false,
+    "Sources": "cui,es"
+  }
+}

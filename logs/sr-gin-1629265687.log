@@ -1,0 +1,5 @@
+[GIN-debug] POST   /api/settings/relevant    --> main.handleTree (5 handlers)
+[GIN-debug] Listening and serving HTTP on :4853
+::1 - [2021-08-18T15:48:33+10:00] "GET /api/queryvis HTTP/1.1 404 799ns "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36" "
+::1 - [2021-08-18T15:48:34+10:00] "GET /favicon.ico HTTP/1.1 404 692ns "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36" "
+::1 - [2021-08-18T15:49:15+10:00] "POST /api/queryvis HTTP/1.1 404 1.15µs "PostmanRuntime/7.28.2" "
