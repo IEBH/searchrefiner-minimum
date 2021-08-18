@@ -69,6 +69,7 @@ func main() {
 
 	// CORS
 	corsConfig := cors.DefaultConfig()
+	// TODO: Remove localhost
 	corsConfig.AllowOrigins = []string{"https://searchrefinery.sr-accelerator.com", "http://localhost:8080"}
 	// OPTIONS method for preflight request
 	corsConfig.AddAllowMethods("OPTIONS")
