@@ -12,12 +12,14 @@ import (
 	gpipeline "github.com/hscells/groove/pipeline"
 	"github.com/hscells/transmute"
 	tpipeline "github.com/hscells/transmute/pipeline"
+	log "github.com/sirupsen/logrus"
 )
 
 func handleTree(c *gin.Context) {
 	fmt.Println("Hello, World!")
 	rawQuery := c.PostForm("query")
 	lang := c.PostForm("lang")
+	username := c.PostForm("username")
 	// Create relevant array of pmids {{{
 	// Split string into array by newline
 	pmids := strings.Fields(c.PostForm("pmids"))
@@ -77,9 +79,12 @@ func handleTree(c *gin.Context) {
 		t.NumRelRet = int(r.R)
 	}
 
-	// if len(t.Nodes) > 0 {
-	// 	t.numRet = int64(t.Nodes[0].Value)
-	// }
+	var numRet int64
+	if len(t.Nodes) > 0 {
+		numRet = int64(t.Nodes[0].Value)
+	}
+
+	log.Infof(fmt.Sprintf("[username=%s][query=%s][lang=%s][pmids=%v][numrel=%d][numret=%d][numrelret=%d]", username, rawQuery, lang, relevant, t.NumRel, numRet, t.NumRelRet))
 
 	c.JSON(200, t)
 }
