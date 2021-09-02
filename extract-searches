@@ -1,0 +1,25 @@
+#!/bin/bash
+# Extract all searches conducted from Search Refiner logs and throw them at an endpoint
+#
+# Usage: extract-searches
+
+# Example log line - "time="2021-08-12T02:01:40Z" level=info msg="[username=][query=vaccine][lang=pubmed][pmids=[]][numrel=0][numret=368176][numrelret=0]"
+
+# Stop on all errors
+set -euo pipefail
+
+LOGBODY=`cat /root/.pm2/logs/searchrefiner.sr-accelerator.com-*-out.log \
+	| grep '^time=' \
+	| grep -F '[username=]'
+`
+
+echo "Send logs in email..."
+echo
+echo -e "To: Matt Carter <matt@mfdc.io>\nFrom: SR-Accelerator Server <info@sr-accelerator.com>\nSubject: Search Refiner logs\n\n$LOGBODY\n" | ssmtp -v matt@mfdc.io
+echo
+
+echo "Flush PM2 logs..."
+pm2 flush searchrefiner.sr-accelerator.com-a
+pm2 flush searchrefiner.sr-accelerator.com-b
+
+echo "All done"
