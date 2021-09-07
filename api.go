@@ -20,6 +20,10 @@ func handleTree(c *gin.Context) {
 	rawQuery := c.PostForm("query")
 	lang := c.PostForm("lang")
 	username := c.PostForm("username")
+	collect, err := strconv.ParseBool(c.PostForm("collect"))
+	if err != nil {
+		panic(err)
+	}
 	// Create relevant array of pmids {{{
 	// Split string into array by newline
 	pmids := strings.Fields(c.PostForm("pmids"))
@@ -84,7 +88,9 @@ func handleTree(c *gin.Context) {
 		numRet = int64(t.Nodes[0].Value)
 	}
 
-	log.Infof(fmt.Sprintf("[username=%s][query=%s][lang=%s][pmids=%v][numrel=%d][numret=%d][numrelret=%d]", username, rawQuery, lang, relevant, t.NumRel, numRet, t.NumRelRet))
+	if collect {
+		log.Infof(fmt.Sprintf("[username=%s][query=%s][lang=%s][pmids=%v][numrel=%d][numret=%d][numrelret=%d]", username, rawQuery, lang, relevant, t.NumRel, numRet, t.NumRelRet))
+	}
 
 	c.JSON(200, t)
 }
