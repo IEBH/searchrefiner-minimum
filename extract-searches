@@ -5,17 +5,19 @@
 
 # Example log line - "time="2021-08-12T02:01:40Z" level=info msg="[username=][query=vaccine][lang=pubmed][pmids=[]][numrel=0][numret=368176][numrelret=0]"
 
+echo "Running Script"
+
 # Stop on all errors
 set -euo pipefail
 
-LOGBODY=`cat /root/.pm2/logs/searchrefiner.sr-accelerator.com-*-out.log \
+LOGBODY=`cat /root/.pm2/logs/searchrefiner.sr-accelerator.com-*-error.log \
 	| grep '^time=' \
 	| grep -F '[username=]'
 `
 
 echo "Send logs in email..."
 echo
-echo -e "To: Matt Carter <matt@mfdc.io>\nFrom: SR-Accelerator Server <info@sr-accelerator.com>\nSubject: Search Refiner logs\n\n$LOGBODY\n" | ssmtp -v matt@mfdc.io
+echo -e "To: Harry Scells <harryscells@gmail.com>\nFrom: SR-Accelerator Server <info@sr-accelerator.com>\nSubject: Search Refiner logs\n\n$LOGBODY\n" | ssmtp -v harryscells@gmail.com
 echo
 
 echo "Flush PM2 logs..."
