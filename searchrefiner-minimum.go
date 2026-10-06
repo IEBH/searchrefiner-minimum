@@ -70,7 +70,8 @@ func main() {
 	// CORS
 	corsConfig := cors.DefaultConfig()
 	// TODO: Remove localhost
-	corsConfig.AllowOrigins = []string{"https://searchrefinery.sr-accelerator.com", "https://searchrefiner.tera-tools.com", "http://localhost:8080"}
+	corsConfig.AllowOrigins = []string{"https://searchrefinery.sr-accelerator.com", "https://searchrefiner.tera-tools.com", "http://localhost:8080", "https://*.searchrefiner.pages.dev"}
+	corsConfig.AllowWildcard = true
 	// OPTIONS method for preflight request
 	corsConfig.AddAllowMethods("OPTIONS")
 	g.Use(cors.New(corsConfig))
