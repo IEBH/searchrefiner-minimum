@@ -16,6 +16,6 @@ build:
 	docker build -t ielab-searchrefiner .
 
 restart:
-	pm2 restart searchrefiner.sr-accelerator.com-a searchrefiner.sr-accelerator.com-b
+	runwisp restart searchrefiner.sr-accelerator.com-*
 
 rebuild: stop clean build restart
