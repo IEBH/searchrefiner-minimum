@@ -7,7 +7,7 @@ clean:
 	-docker image rm ielab-searchrefiner
 
 stop:
-	-pm2 stop searchrefiner.sr-accelerator.com-a searchrefiner.sr-accelerator.com-b
+	-runwisp stop searchrefiner.sr-accelerator.com-*
 	-docker stop searchrefiner.sr-accelerator.com-a
 	-docker stop searchrefiner.sr-accelerator.com-b
 
